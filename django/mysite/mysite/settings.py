@@ -74,11 +74,19 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+DATABASE_ROUTERS = ['manager.router.DatabaseAppsRouter']
+DATABASE_APPS_MAPPING = {'Voltage':'t1_db',
+'Temperature':'t2_db'}
 
 DATABASES = {
-    'default': {
+    'default': {},
+    't1_db': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'Voltage',
+    },
+    't2_db':{
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'Temperature',
     }
 }
 
